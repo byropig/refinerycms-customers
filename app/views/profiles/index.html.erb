@@ -1,0 +1,75 @@
+<h2>Customer Profile</h2>
+
+<div class="account">
+	<h3>Account Details</h3>
+	
+	<div class='newform'>
+		<%= form_for(@current_customer) do |f| %>	  
+		
+	      <%= f.label :name %>
+		  <div class='input'>
+			<%= f.text_field :name, :disabled => true %>
+		  </div>
+	
+		  <%= f.label :surname %>
+		  <div class='input'>
+			<%= f.text_field :surname, :disabled => true %>
+		  </div>
+	
+		  <%= f.label :contact_number %>
+		  <div class='input'>
+			<%= f.text_field :contact_number, :disabled => true %>
+		  </div>
+	
+		  <%= f.label :email %>
+		  <div class='input'>
+			<%= f.email_field :email, :disabled => true %>
+		  </div>
+		<% end %>
+			
+		
+		<div class="clear"></div>
+		<p><%= link_to "Edit Details", edit_customer_registration_path %></p>
+	  
+	</div>
+</div>
+
+<% if @delivery_addresses.present? %>
+	<div class="account">	
+	<h3>Addresses</h3>
+	  
+		<% @delivery_addresses.each do |address| %>
+			<%= render :partial => 'show_address', :locals => {:address => address, :url_text => 'Edit this address', :url => edit_address_path(address)} %>
+		<% end %>
+	</div>	
+<% end %>
+<div class="clear"></div>
+
+<% if @orders.present? then %>
+<div class="order">
+	<div>
+		<h3>Order History</h3>
+		
+		<table>
+		<tr>
+			<th>Order Number</th>
+	        <th>Status</th>
+			<th>Date</th>
+			<th>Total Price</th>
+		</tr>
+		<% @orders.each do |order| %>
+			<tr class="<%= cycle('odd', 'even') %>">
+				<td><%= link_to order.order_number, order_history_details_path(order.order_number) %></td>
+	            <td><%= order.order_status %></td>
+				<td><%= order.created_at.strftime("%m/%d/%Y") if order.created_at.present? %></td>
+			    <td><%= order.grand_total if order.grand_total.present? %></td>
+			</tr>
+		<% end %>
+		</table>
+	</div>
+	<p><%= link_to "View Full Order History", order_history_path %></p>
+</div>
+<% end %>
+
+ 
+

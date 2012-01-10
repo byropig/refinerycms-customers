@@ -1,0 +1,52 @@
+<% content_for :body_content_title do %>
+  <%= @customer.name %>
+<% end %>
+
+<% content_for :body_content_left do %>
+  <section>
+    <h1>Name</h1>
+    <p>
+      <%=raw @customer.name %>
+    </p>
+  </section>
+  <section>
+    <h1>Surname</h1>
+    <p>
+      <%=raw @customer.surname %>
+    </p>
+  </section>
+  <section>
+    <h1>Contact Number</h1>
+    <p>
+      <%=raw @customer.contact_number %>
+    </p>
+  </section>
+  
+  <section>
+    <h1>Email</h1>
+    <p>
+      <%=raw @customer.email %>
+    </p>
+  </section>
+  <section>
+    <h1>Encrypted Password</h1>
+    <p>
+      <%=raw @customer.encrypted_password %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="customers">
+      <% @customers.each do |customer| %>
+        <li>
+          <%= link_to customer.name, customer_path(customer) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

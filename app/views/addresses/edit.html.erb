@@ -1,0 +1,42 @@
+<h3 class="category">Edit Address</h3>
+
+<div class="newform">
+  <% form_for(@address) do |f| %>
+      <% if @address.errors.any? %>
+		<div id="error_explanation">
+		  <ul>
+		    <% @address.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+		  </ul>
+		</div>
+	  <% end %>
+      
+      <%= f.hidden_field :customer_id %>
+      <%= f.hidden_field :default %>
+      
+	  
+
+      <%= f.label :address_line_1, "Address" %>
+      <div class="input"><%= f.text_field :address_line_1 %></div>
+
+      <label>&nbsp;</label>
+      <div class="input"><%= f.text_field :address_line_2 %></div>
+
+      <%= f.label :suburb %>
+      <div class="input"><%= f.text_field :suburb %></div>
+	  
+
+      <%= f.label :city, "City" %>
+      <div class="input"><%= f.text_field :city %></div>
+
+      <%= f.label :postal_code %>
+      <div class="input"><%= f.text_field :postal_code %></div>
+
+	  
+      <div class='btn'><%= f.submit "Update" %></div>
+
+  <% end %>
+</div>
+
+

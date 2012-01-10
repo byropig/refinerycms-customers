@@ -1,0 +1,32 @@
+<h2 class="category">Customer Details</h2>
+
+<div class='newform'>
+	<%= form_for(@current_customer) do |f| %>	  
+	
+      <%= f.label :name %>
+	  <div class='input'>
+		<%= f.text_field :name, :disabled => true %>
+	  </div>
+
+	  <%= f.label :surname %>
+	  <div class='input'>
+		<%= f.text_field :surname, :disabled => true %>
+	  </div>
+
+	  <%= f.label :contact_number %>
+	  <div class='input'>
+		<%= f.text_field :contact_number, :disabled => true %>
+	  </div>
+
+	  <%= f.label :email %>
+	  <div class='input'>
+		<%= f.email_field :email, :disabled => true %>
+	  </div>
+	<% end %>
+		
+	
+	<div class="clear"></div>
+	<br />
+	<%= link_to "Back", profiles_path %> | <%= link_to "Edit Details", edit_customer_registration_path %>
+  
+</div>

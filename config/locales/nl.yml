@@ -1,0 +1,21 @@
+nl:
+  plugins:
+    customers:
+      title: Customers
+  admin:
+    customers:
+      actions:
+        create_new: Maak een nieuwe Customer
+        reorder: Wijzig de volgorde van de Customers
+        reorder_done: Klaar met het wijzingen van de volgorde van de Customers
+      records:
+        title: Customers
+        sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+        no_items_yet: Er zijn nog geen Customers. Druk op 'Maak een nieuwe Customer' om de eerste aan te maken.
+      customer:
+        view_live_html: Bekijk deze customer op de website <br/><em>(opent een nieuw venster)</em>
+        edit: Bewerk deze customer
+        delete: Verwijder deze customer voor eeuwig
+  customers:
+    show:
+      other: Andere Customers

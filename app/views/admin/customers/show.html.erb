@@ -1,0 +1,60 @@
+<%= form_for [:admin, @customer] do |f| -%>
+  <%= render :partial => "/shared/admin/error_messages", :locals => {
+          :object => @customer,
+          :include_object_name => true
+        } %>
+  
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= @customer.name  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :surname -%>
+    <%= @customer.surname  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :contact_number -%>
+    <%= @customer.contact_number  -%>
+  </div>
+  
+    
+  <div class='field'>
+    <%= f.label :email -%>
+    <%= @customer.email  -%>
+  </div>
+  
+  <br><BR>
+  <div class='field'>
+  	<h2>Order History</h2>
+  </div>
+  <hr />
+  
+
+  <table width="100%">
+	  <tr class="<%= cycle("even", "odd") %>"> 
+		<th><b>Order Number</b></th>
+		<th><b>Payment Type</b></th>
+		<th><b>Status</b></th>
+		<th><b>Date</b></th>
+		<th><b>Total Price</b></th>
+	  </tr>
+	  <% @customer.orders.each do |order| %>
+			<tr class="<%= cycle("odd", "even") %>"> 
+				<td><%= link_to order.order_number, admin_order_path(order)  -%></td>
+				<td><%= order.payment_type  -%></td>
+				<td><%= order.order_status  -%></td>
+				<td><%= order.created_at.strftime("%d %B %Y")  -%></td>
+				<td><%= rands(order.grand_total)  -%></td>
+			</tr>
+  	  <% end %>
+  </table>
+  
+  
+  <%#= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false
+              } %>
+<% end -%>

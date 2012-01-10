@@ -1,0 +1,39 @@
+<% if @current_order.present? then %>
+<div class="confirmOrder">
+	<h2 class="category ordernumber">Order Number: <%= @current_order.order_number %></h2>
+	<h3 class="date"><%= @current_order.created_at.strftime("%d %B %Y") unless @current_order.created_at.blank? %></h3>
+	<div class="clear"></div>
+
+	<table>
+		<tr>
+			<th class="left">Product</th>		
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Total</th>
+		</tr>
+		<% order = @current_order 
+			
+			total_price = order.grand_total %>
+		
+					
+		<% order.order_items.each do |order_item| %>
+			<tr class="<%= cycle('odd', 'even') %>">
+				<td class="first"><%= order_item.product_name %></td>					
+				<td><%= rands(order_item.price) %></td>
+				<td><%= order_item.quantity %></td>
+				<td><%= rands(order_item.total) %></td>
+			</tr>
+		<% end %>
+		
+
+		<tr>
+			<td class="total first" colspan="3">TOTAL PRICE</td>
+			<td class="total"><%= rands(total_price) %></td>
+		</tr>
+	
+	</table>
+</div>
+<% end %>
+
+<%= link_to "Back", :back %> 
+

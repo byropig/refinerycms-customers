@@ -1,0 +1,40 @@
+<%= form_for [:admin, @customer] do |f| -%>
+  <%= render :partial => "/shared/admin/error_messages", :locals => {
+          :object => @customer,
+          :include_object_name => true
+        } %>
+  
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name, :class => 'larger widest'  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :surname -%>
+    <%= f.text_field :surname  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :contact_number -%>
+    <%= f.text_field :contact_number  -%>
+  </div>
+  
+    
+  <div class='field'>
+    <%= f.label :email -%>
+    <%= f.text_field :email  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :encrypted_password -%>
+    <%= f.text_field :encrypted_password  -%>
+  </div>
+  
+  <%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('delete', :scope => 'admin.customers.customer'),
+                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @customer.name)
+              } %>
+<% end -%>

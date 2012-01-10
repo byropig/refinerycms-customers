@@ -1,0 +1,21 @@
+nb:
+  plugins:
+    customers:
+      title: Customers
+  admin:
+    customers:
+      actions:
+        create_new: Lag en ny Customer
+        reorder: Endre rekkefølgen på Customers
+        reorder_done: Ferdig å endre rekkefølgen Customers
+      records:
+        title: Customers
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: Det er ingen Customers enda. Klikk på "Lag en ny Customer" for å legge til din første customer.
+      customer:
+        view_live_html: Vis hvordan denne customer ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+        edit: Rediger denne customer
+        delete: Fjern denne customer permanent
+  customers:
+    show:
+      other: Andre Customers
